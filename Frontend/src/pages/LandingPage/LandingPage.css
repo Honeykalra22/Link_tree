@@ -1,0 +1,226 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #fff; /* Light theme by default */
+    color: #333; /* Light theme text color */
+  }
+  
+  .container.dark {
+    background-color: #333; /* Dark theme background */
+    color: #fff; /* Dark theme text color */
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #e8e8e8;
+    
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: inherit; /* Inherits theme color */
+  }
+  
+  .btn {
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .primary-btn {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .primary-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .theme-btn {
+    background-color: transparent;
+    border: 2px solid #007bff;
+    color: #007bff;
+    margin-left: 10px;
+  }
+  
+  .theme-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  /* Hero Section Styles */
+  .hero {
+    text-align: center;
+    padding: 60px 0;
+  }
+  
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 18px;
+    color: inherit; /* Inherits theme color */
+    margin-bottom: 30px;
+  }
+  
+  .secondary-btn {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .secondary-btn:hover {
+    background-color: #218838;
+  }
+  
+  .hero-img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Features Section Styles */
+  .features {
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 0;
+  }
+  
+  .feature-card {
+    flex: 1;
+    margin: 0 15px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .feature-card h3 {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  
+  .feature-card p {
+    color: inherit; /* Inherits theme color */
+  }
+  
+  /* Testimonials Section Styles */
+  .testimonials {
+    text-align: center;
+    padding: 60px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .testimonials h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .highlight {
+    color: #007bff;
+  }
+  
+  .outline-btn {
+    background-color: transparent;
+    border: 2px solid #007bff;
+    color: #007bff;
+    margin-bottom: 30px;
+  }
+  
+  .outline-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .testimonial-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  .testimonial-card {
+    flex: 1;
+    margin: 0 15px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonial-card .icon {
+    color: #28a745;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial-card p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .testimonial-card span {
+    font-size: 14px;
+    color: #999;
+  }
+  
+  /* Integrations Section Styles */
+  .integrations {
+    text-align: center;
+    padding: 60px 0;
+  }
+  
+  .integrations h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+  
+  .integration-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+  
+  .integration-grid img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 60px;
+    color: inherit; /* Inherits theme color */
+  }

@@ -22,30 +22,30 @@ const GenerateAccessAndRefreshToken = async (userId) => {
 }
 
 export const registerUser = asyncHandler(async (req, res) => {
-    const {accept} = req.body;
-    if(!accept) {
-        throw new apiError(400, "Policy acceptance is neccasory")
+    // const {accept} = req.body;
+    const {  email, password, firstName, LastName, accept } = req.body;
+    // if(!accept) {
+    //     console.log('abe nhi maan rha h ye')
+    //     throw new apiError(400, "Policy acceptance is neccasory")
+    // }
+
+    if (!email?.trim() || !password?.trim() || !firstName?.trim() || !LastName?.trim() || !accept) {
+        throw new apiError(400, "All fields are required");
     }
-    const { username, email, password, firstName, LastName } = req.body;
 
-    if (!username || !email || !password || !username?.trim() || !email?.trim() || !password?.trim() || !firstName || !LastName) {
-        throw new apiError(500, "All fields are required");
-    }
+    const existingUser = await User.findOne({ email: email.toLowerCase().trim() });
 
-    const existedUser = await User.findOne({
-        $or: [{ username }, { email }]
-    })
-
-    if (existedUser) {
-        throw new apiError(401, "User is already registered");
+    if (existingUser) {
+        throw new apiError(409, "User is already registered");
     }
 
     const user = await User.create({
-        username,
+        // username,
         email,
         password,
         firstName,
         LastName,
+        accept
     })
 
     const createdUser = await User.findById(user._id).select("-password -refreshToken")
@@ -63,11 +63,11 @@ export const registerUser = asyncHandler(async (req, res) => {
 
 export const loginUser = asyncHandler(async (req, res) => {
 
-    const { username, email, password } = req.body;
+    const { email, password } = req.body;
 
     const user = await User.findOne(
         {
-            $or: [{ username }, { email }]
+            $or: [ { email }]
         }
     )
     if (!user) {

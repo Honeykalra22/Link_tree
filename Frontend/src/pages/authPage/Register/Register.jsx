@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Register.css';
 import axios from 'axios';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    username:'',
+    // username:'',
     email: '',
     password: '',
     confirmPassword: '',
     accept: false,
     firstName:'',
-    lastName:'',
+    LastName:'',
   });
 
   const url = 'http://localhost:8000/api/v2/user/register';
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
+    e.preventDefault();
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
@@ -38,10 +40,10 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post(url, formData);
+      const response = await axios.post(url, formData, {headers: {"Content-Type": "application/json"}});
       console.log('User registered successfully:', response.data);
       // alert('Registration successful!');
-      Navigate('/login')
+      navigate('/login')
     } catch (error) {
       console.error('Error registering user:', error.response?.data || error.message);
       alert('Registration failed. Please try again.');
@@ -59,17 +61,17 @@ const Register = () => {
 
         <form onSubmit={handleSubmit}>
           <input type="text" name="firstName" placeholder="FirstName" value={formData.firstName} onChange={handleChange} required />
-          <input type="text" name="lastName" placeholder="LastName" value={formData.lastName} onChange={handleChange} required />
-          <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required />
+          <input type="text" name="LastName" placeholder="LastName" value={formData.LastName} onChange={handleChange} required />
+          {/* <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required /> */}
           <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
           <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
           <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
 
           <div className="terms">
-            <input type="checkbox" name="termsAccepted" checked={formData.accept} onChange={handleChange} />
+            <input type="checkbox" name="accept" checked={formData.accept} onChange={handleChange} />
             <label>By creating an account, I agree to the <Link to="#">Terms of Use</Link> and <Link to="#">Privacy Policy</Link></label>
           </div>
-    
+
           <button type="submit" className="btn primary-btn">Create an account</button>
         </form>
 

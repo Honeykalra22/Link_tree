@@ -14,20 +14,21 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        username:
-        {
-            type: String,
-            required: function () {
-                return !this.email;
-            },
-            unique: true
-        },
+        // username:
+        // {
+        //     type: String,
+        //     required: function () {
+        //         return !this.email;
+        //     },
+        //     unique: true
+        // },
         email:
         {
             type: String,
-            required: function () {
-                return !this.username;
-            },
+            // required: function () {
+            //     return !this.username;
+            // },
+            required: true,
             unique: true
         },
         password:

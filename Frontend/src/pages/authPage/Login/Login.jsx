@@ -6,8 +6,8 @@ import axios from "axios";
 const Login = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const url = 'http://localhost:8000/api/v2/user/login';
-    const [formData, setFormData] = useState({ username: "", password: "" });
-    const isFormValid = formData.username.trim() !== "" && formData.password.trim() !== "";
+    const [formData, setFormData] = useState({ email: "", password: "" });
+    const isFormValid = formData.email.trim() !== "" && formData.password.trim() !== "";
 
     const navigate = useNavigate();
 
@@ -43,10 +43,10 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="input-field">
                         <input
-                            type="text"
-                            placeholder="Spark/ Username"
+                            type="email"
+                            placeholder="Email"
                             value={formData.username}
-                            onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             required
                         />
 

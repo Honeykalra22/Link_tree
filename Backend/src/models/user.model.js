@@ -54,7 +54,7 @@ const userSchema = new mongoose.Schema(
         accept: {
             type: Boolean,
             required: true,
-            default: false,
+            // default: false,
         }
     }, { timestamps: true })
 

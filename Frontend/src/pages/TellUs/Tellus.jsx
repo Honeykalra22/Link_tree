@@ -32,7 +32,7 @@ function Tellus() {
                 <p>Tell us about yourself</p>
                 <p>For a personalized Spark experience</p>
 
-                <form action='submit' onSubmit={onsubmit()}>
+                <form action='submit' onSubmit={onsubmit}>
                     <label htmlFor="username">Tell us your username</label>
                     <input type="text" id="username" name="username" placeholder="Enter your username" />
 

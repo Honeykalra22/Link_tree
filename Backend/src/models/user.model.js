@@ -53,7 +53,8 @@ const userSchema = new mongoose.Schema(
         },
         accept: {
             type: Boolean,
-            required: true
+            required: true,
+            default: false,
         }
     }, { timestamps: true })
 

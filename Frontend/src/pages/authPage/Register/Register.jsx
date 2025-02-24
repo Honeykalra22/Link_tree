@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './Register.css';
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ const Register = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    termsAccepted: false,
+    accept: false,
     firstName:'',
     lastName:'',
   });
@@ -27,7 +27,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.termsAccepted) {
+    if (!formData.accept) {
       alert('Please accept the terms and conditions.');
       return;
     }
@@ -40,7 +40,8 @@ const Register = () => {
     try {
       const response = await axios.post(url, formData);
       console.log('User registered successfully:', response.data);
-      alert('Registration successful!');
+      // alert('Registration successful!');
+      Navigate('/login')
     } catch (error) {
       console.error('Error registering user:', error.response?.data || error.message);
       alert('Registration failed. Please try again.');
@@ -65,7 +66,7 @@ const Register = () => {
           <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
 
           <div className="terms">
-            <input type="checkbox" name="termsAccepted" checked={formData.termsAccepted} onChange={handleChange} />
+            <input type="checkbox" name="termsAccepted" checked={formData.accept} onChange={handleChange} />
             <label>By creating an account, I agree to the <Link to="#">Terms of Use</Link> and <Link to="#">Privacy Policy</Link></label>
           </div>
 

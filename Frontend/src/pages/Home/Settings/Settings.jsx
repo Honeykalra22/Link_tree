@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Settings() {
-  return (
+  return ( 
     <div className='setting_container'>
         <label htmlFor="edit_form">Edit Profile</label>
         <div className='edit_form'>

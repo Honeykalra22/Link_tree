@@ -12,13 +12,23 @@ const Login = () => {
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
-        try {
+        e.preventDefault();
+        try 
+        {
             const response = await axios.post(url, formData);
             console.log('User logged in successfully:', response.data);
-            alert('Login successful!');
-            navigate('/tell-us-about-you')
-        } catch (error) {
+            const token = response.data.data.accessToken;
+
+            if(token)
+            {
+                localStorage.setItem("accessToken", token);
+                console.log(token, "user is login successfully")
+                navigate('/tell-us-about-you')
+            }
+            
+        } 
+        catch (error) 
+        {
             console.error('Error logging in:', error.response?.data || error.message);
             alert('Login failed. Please try again.');
         }

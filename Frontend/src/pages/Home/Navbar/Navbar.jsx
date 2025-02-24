@@ -3,7 +3,7 @@ import './Navbar.css'
 
 function Navbar({ username }) {
     return (
-        <div className="navbar">
+        <div className="navbar1">
             <div className="navbar-left">
                 <h2>Hi, {username}!</h2>
                 <p>Congratulations. You got a great response today.</p>

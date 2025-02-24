@@ -18,8 +18,35 @@ import logo from '../../assets/Group.png'
 
 const LandingPage = () => {
 
+  const messages = [
+    {
+      heading: "Amazing tool! Saved me months",
+      content: "This is a placeholder for your testimonials and what your client has to say, put them here and make sure its 100% true and meaningful.",
+      user: "John Master",
+      position: "Director, Spark.com"
+    },
+    {
+      heading: "Amazing tool! Saved me months",
+      content: "This is a placeholder for your testimonials and what your client has to say, put them here and make sure its 100% true and meaningful.",
+      user: "John Master",
+      position: "Director, Spark.com"
+    },
+    {
+      heading: "Amazing tool! Saved me months",
+      content: "This is a placeholder for your testimonials and what your client has to say, put them here and make sure its 100% true and meaningful.",
+      user: "John Master",
+      position: "Director, Spark.com"
+    },
+    {
+      heading: "Amazing tool! Saved me months",
+      content: "This is a placeholder for your testimonials and what your client has to say, put them here and make sure its 100% true and meaningful.",
+      user: "John Master",
+      position: "Director, Spark.com"
+    },
+  ]
+
   return (
-    <div className={`container `}>
+    <div className="container_Landing">
       <nav className="navbar">
         <div className="logo">
           <img src={logo} alt="Logo" />
@@ -33,65 +60,80 @@ const LandingPage = () => {
       </nav>
 
 
-      <header className="hero">
-        <h1>The easiest place to update and share your Connection</h1>
-        <p>
-          Your business deserves everything you're creating, all in one place.
-          They’ll thank you for it.
-        </p>
-        <button className="btn secondary-btn">Get Started</button>
-        <img src={Analytics} alt="Dashboard" className="hero-img" />
-      </header>
-
-      {/* Features Section */}
-      <section className="features">
-        <div className="feature-card">
-          <img src={div} alt="Chart" />
-          <h3>Analyze your audience and keep your followers engaged</h3>
-          <p>See product insights and track payments.</p>
-        </div>
-        <div className="feature-card">
-          <img src={div2} alt="Content" />
-          <h3>Share limitless content in limitless ways</h3>
-          <p>Monetization made simple.</p>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="testimonials">
-        <h2>Here's what our <span className="highlight">customer</span> has to say</h2>
-        <button className="btn outline-btn">Read More</button>
-        <div className="testimonial-grid">
-          <div className="testimonial-card">
-            <FaCheckCircle className="icon" />
-            <p>Amazing tool! Saved me months of work.</p>
-            <span>- Satisfied Customer</span>
+      <div className="main-container">
+        <div className="hero">
+          <div className="hero_1">
+            <h1>The easiest place to update and share your Connection</h1>
+            <p>
+              Help your followers discover everything you’re sharing all over the internet, in one simple place. They’ll thank you for it!
+            </p>
+            <button className="btn secondary-btn">Get Started</button>
           </div>
-          <div className="testimonial-card">
-            <FaCheckCircle className="icon" />
-            <p>Highly recommend for scaling businesses.</p>
-            <span>- Another User</span>
+          <img src={Analytics} alt="Dashboard" className="hero-img" />
+        </div>
+
+        <section className="hero">
+          <img src={div} alt="Chart" className="hero-img" />
+          <div className="hero_1">
+            <h1>Analyze your audience and keep your followers engaged</h1>
+            <p>See product insights and track payments.</p>
           </div>
-        </div>
-      </section>
+        </section>
+        <section className="hero">
+          <div className="hero_1">
+            <h1>Share limitless content in limitless ways</h1>
+            <p>Monetization made simple.</p>
+          </div>
+          <img src={div2} alt="Content" className="hero-img" />
+        </section>
 
-      {/* Integrations */}
-      <section className="integrations">
-        <h2>All Link Apps and Integrations</h2>
-        <div className="integration-grid">
-          <img src={a1} alt="" />
-          <img src={a2} alt="" />
-          <img src={a3} alt="" />
-          <img src={a4} alt="" />
-          <img src={a5} alt="" />
-          <img src={a6} alt="" />
-          <img src={a7} alt="" />
-          <img src={a8} alt="" />
-          <img src={a9} alt="" />
-        </div>
-      </section>
+        <section className="testimonials">
+          <h2>Here's what our <span className="highlight">customer</span> has to say</h2>
+          <button className="btn outline-btn">Read customer stories</button>
 
-      {/* Footer */}
+          <div className="messages-container">
+            {messages.map((item, index) => (
+              <div key={index} className="message-card">
+                <h1>{item.heading}</h1>
+                <p>{item.content}</p>
+                <h2>{item.user}</h2>
+                <h3>{item.position}</h3>
+              </div>
+            ))}
+          </div>
+
+
+          {/* <div className="testimonial-grid">
+            <div className="testimonial-card">
+              <FaCheckCircle className="icon" />
+              <p>Amazing tool! Saved me months of work.</p>
+              <span>- Satisfied Customer</span>
+            </div>
+            <div className="testimonial-card">
+              <FaCheckCircle className="icon" />
+              <p>Highly recommend for scaling businesses.</p>
+              <span>- Another User</span>
+            </div>
+          </div> */}
+        </section>
+
+        {/* Integrations */}
+        <section className="integrations">
+          <h2>All Link Apps and Integrations</h2>
+          <div className="integration-grid">
+            <img src={a1} alt="" />
+            <img src={a2} alt="" />
+            <img src={a3} alt="" />
+            <img src={a4} alt="" />
+            <img src={a5} alt="" />
+            <img src={a6} alt="" />
+            <img src={a7} alt="" />
+            <img src={a8} alt="" />
+            <img src={a9} alt="" />
+          </div>
+        </section>
+      </div>
+
       <footer className="footer">
         <p>© 2024 Spark Marketplace. All rights reserved.</p>
       </footer>

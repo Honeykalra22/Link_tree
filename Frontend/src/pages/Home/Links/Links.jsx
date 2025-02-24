@@ -1,13 +1,73 @@
-import React from 'react'
+import React, {useState} from 'react'
+import logo from '../../../assets/Group.png'
+import './Links.css'
 
 function Links() {
-    return (
-        <div>
+    const [activeButton, setActiveButton] = useState(null);
+    const [showLinks, setShowLinks] = useState(true);
 
+    const handleButtonClick = (button) => {
+        setActiveButton(button);
+        if (button === "link") {
+            setShowLinks(true);
+        } else {
+            setShowLinks(false);
+        }
+    };
+
+    return (
+        <div className='container'>
+            <div className="phone-container">
+                {/* Top Section */}
+                <div className="profile">
+                    <button className="share-btn">Share</button>
+                    <div className="profile">
+                        <img src={logo} alt="profile" className="profile-img" />
+                        <p className="username">Username</p>
+                    </div>
+                </div>
+
+                {/* Buttons for Links & Shop */}
+                <div className="button-group">
+                    <button
+                        className={`toggle-btn ${activeButton === "link" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("link")}
+                    >
+                        Link
+                    </button>
+                    <button
+                        className={`toggle-btn ${activeButton === "shop" ? "active" : ""}`}
+                        onClick={() => handleButtonClick("shop")}
+                    >
+                        Shop
+                    </button>
+                </div>
+
+                {showLinks && (
+                    <div className="links-section">
+                        <div className="link-item">
+                            <img src={logo} alt="youtube icon" /> Latest YouTube Video
+                        </div>
+                        <div className="link-item">
+                            <img src={logo} alt="instagram" /> Latest Instagram Reel
+                        </div>
+                    </div>
+                )}
+
+                {/* Get Connected Section */}
+                <div className="connect-section">
+                    <button className="connect-btn">Get Connected</button>
+                    <div className="logo-container">
+                        <img src={logo} alt="logo" className="logo" />
+                        <h2>SPARK</h2>
+                    </div>
+                </div>
+            </div>
 
             {/* Main Content */}
             <div className="main-content">
                 {/* Profile Section */}
+                <p>profile</p>
                 <div className="profile-section">
                     <div className="profile-pic">
                         <img src="" alt="Profile" />
@@ -36,7 +96,7 @@ function Links() {
                 {/* Banner Section */}
                 <div className="banner-section">
                     <div className="banner">
-                        <img src="" alt="Banner" />
+                        <img src={logo} alt="Banner" />
                         <h2>Username</h2>
                         <p>
                             <img src="" alt="User Icon" />
@@ -57,62 +117,6 @@ function Links() {
                 <button className="save-btn">Save</button>
 
             </div>
-
-            {/* <div>
-                <div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div>
-                    <button>Get Started</button>
-                    <div>
-                        logo part
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <div>
-                    <img src="" alt="" />
-                    <div>
-                        <p>Pick an image</p>
-                        <p>Remove</p>
-                    </div>
-                </div>
-                <div>
-                    <input type="text" />
-                    <input type="text" />
-                </div>
-            </div>
-
-            <div>
-                <div>
-                    <button>add link </button>
-                    <button>add shop</button>
-                </div>
-                <div>
-                    <p>add</p>
-                </div>
-            </div>
-
-
-            <div>
-                <div>
-                    <img src="" alt="" />
-                    <h2>username</h2>
-                    <p>
-                        <img src="" alt="" />
-                        username
-                    </p>
-                </div>
-                <div>
-                    <p>custom background color</p>
-                    <p>copor options to change bg</p>
-                </div>
-            </div>
-
-            <button>save</button> */}
         </div>
     )
 }

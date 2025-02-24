@@ -9,7 +9,9 @@ const Register = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    termsAccepted: false
+    termsAccepted: false,
+    firstName:'',
+    lastName:'',
   });
 
   const url = 'http://localhost:8000/api/v2/user/register';
@@ -55,6 +57,8 @@ const Register = () => {
         <p>Create an account <Link to="/login">Sign in instead</Link></p>
 
         <form onSubmit={handleSubmit}>
+          <input type="text" name="firstName" placeholder="FirstName" value={formData.firstName} onChange={handleChange} required />
+          <input type="text" name="lastName" placeholder="LastName" value={formData.lastName} onChange={handleChange} required />
           <input type="text" name="username" placeholder="Username" value={formData.username} onChange={handleChange} required />
           <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
           <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} required />

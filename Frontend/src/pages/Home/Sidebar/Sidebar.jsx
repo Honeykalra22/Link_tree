@@ -1,13 +1,22 @@
 import React, { useState } from 'react'
 import logo from '../../../assets/Group.png'
 import './Sidebar.css'
+import axios from 'axios'
 
 function Sidebar({ username }) {
     const [isHover, setIsHover] = useState(false)
-    const handleHover = () => {
-        onmouseenter(() => setIsHover(true))
-        onmouseleave(() => setIsHover(false))
-    }
+    const url = 'http://localhost:8000/api/v2/user/logoutUser'
+
+    const handleLogout = async () => {
+        try {
+            const response = await axios.post(url, {}, { withCredentials: true });
+            return response.data;
+        } catch (error) {
+            console.error("Logout failed:", error.response?.data || error.message);
+        }
+    };
+
+
     return (
         <div className="sidebar">
             <div className="sidebar-header">
@@ -52,7 +61,7 @@ function Sidebar({ username }) {
                     <p>{username}</p>
                 </div>
                 {isHover && (
-                    <p className="sign-out-text">Sign out</p>
+                    <p className="sign-out-text" onClick={handleLogout}>Sign out</p>
                 )}
             </div>
         </div>

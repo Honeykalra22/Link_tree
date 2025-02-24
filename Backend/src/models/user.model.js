@@ -2,9 +2,18 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import crypto from 'crypto'
+import { type } from 'os'
 
 const userSchema = new mongoose.Schema(
     {
+        firstName: {
+            type: String,
+            required: true,
+        },
+        LastName: {
+            type: String,
+            required: true,
+        },
         username:
         {
             type: String,
@@ -41,6 +50,10 @@ const userSchema = new mongoose.Schema(
         resetPasswordExpires:
         {
             type: Date
+        },
+        accept: {
+            type: Boolean,
+            required: true
         }
     }, { timestamps: true })
 

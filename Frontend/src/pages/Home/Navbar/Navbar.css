@@ -1,13 +1,29 @@
-.navbar {
+/* .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background-color: white;
+    padding: 5px 10px;
+    background-color: rgb(255, 255, 255);
     border-bottom: 1px solid #ddd;
     border-radius: 20px;
-    width: 80vw;
+    position: fixed;
+} */
+
+.navbar1 {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid #ddd;
+    border-radius: 20px;
+    z-index: 1000;
 }
+
 
 .navbar-left {
     align-items: end;

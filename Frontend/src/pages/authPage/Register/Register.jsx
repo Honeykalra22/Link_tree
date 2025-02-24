@@ -78,7 +78,7 @@ const Register = () => {
         <button className="btn google-btn">
           <img src="/google-icon.png" alt="Google" />
           Continue with Google
-        </button>
+        </button> 
 
         <p className="recaptcha-text">
           This site is protected by reCAPTCHA and the <Link to="#">Google Privacy Policy</Link> and <Link to="#">Terms of Service</Link> apply.

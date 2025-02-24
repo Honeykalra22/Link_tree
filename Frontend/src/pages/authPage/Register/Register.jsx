@@ -69,7 +69,7 @@ const Register = () => {
             <input type="checkbox" name="termsAccepted" checked={formData.accept} onChange={handleChange} />
             <label>By creating an account, I agree to the <Link to="#">Terms of Use</Link> and <Link to="#">Privacy Policy</Link></label>
           </div>
-
+    
           <button type="submit" className="btn primary-btn">Create an account</button>
         </form>
 

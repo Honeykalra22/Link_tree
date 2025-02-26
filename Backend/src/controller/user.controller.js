@@ -22,13 +22,7 @@ const GenerateAccessAndRefreshToken = async (userId) => {
 }
 
 export const registerUser = asyncHandler(async (req, res) => {
-    // const {accept} = req.body;
     const { email, password, firstName, LastName, accept } = req.body;
-    // if(!accept) {
-    //     console.log('abe nhi maan rha h ye')
-    //     throw new apiError(400, "Policy acceptance is neccasory")
-    // }
-
     if (!email?.trim() || !password?.trim() || !firstName?.trim() || !LastName?.trim() || !accept) {
         throw new apiError(400, "All fields are required");
     }
@@ -40,7 +34,6 @@ export const registerUser = asyncHandler(async (req, res) => {
     }
 
     const user = await User.create({
-        // username,
         email,
         password,
         firstName,

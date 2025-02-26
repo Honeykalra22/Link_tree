@@ -14,20 +14,9 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        // username:
-        // {
-        //     type: String,
-        //     required: function () {
-        //         return !this.email;
-        //     },
-        //     unique: true
-        // },
         email:
         {
             type: String,
-            // required: function () {
-            //     return !this.username;
-            // },
             required: true,
             unique: true
         },
@@ -55,7 +44,6 @@ const userSchema = new mongoose.Schema(
         accept: {
             type: Boolean,
             required: true,
-            // default: false,
         }
     }, { timestamps: true })
 

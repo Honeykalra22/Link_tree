@@ -15,4 +15,8 @@ app.use(express.json({limit: '128kb'}))
 
 import userRouter from './route/user.route.js'
 app.use('/api/v2/user', userRouter)
+
+import linkRouter from './route/link.route.js'
+app.use('/api/v2/link', linkRouter)
+
 export {app}

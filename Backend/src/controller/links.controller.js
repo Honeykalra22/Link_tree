@@ -56,7 +56,7 @@ export const deleteLinkAndShop = asyncHandler(async (req, res) => {
         .json(new apiResponse(200, link, "Link is deleted successfully"))
 })
 
-export const countClicksOnLinks = asyncHandler(async (req, res) => {
+export const countClicksOnLinksAndPost = asyncHandler(async (req, res) => {
     const { id } = req.params;
     const userId = req.user._id;
 

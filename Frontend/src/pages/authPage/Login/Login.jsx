@@ -25,6 +25,10 @@ const Login = () => {
                 console.log(token, "user is login successfully")
                 navigate('/tell-us-about-you')
             }
+            if(!token)
+            {
+                console.log("user is not login successfully")
+            }
             
         } 
         catch (error) 

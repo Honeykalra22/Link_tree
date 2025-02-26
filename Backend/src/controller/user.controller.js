@@ -23,7 +23,7 @@ const GenerateAccessAndRefreshToken = async (userId) => {
 
 export const registerUser = asyncHandler(async (req, res) => {
     // const {accept} = req.body;
-    const {  email, password, firstName, LastName, accept } = req.body;
+    const { email, password, firstName, LastName, accept } = req.body;
     // if(!accept) {
     //     console.log('abe nhi maan rha h ye')
     //     throw new apiError(400, "Policy acceptance is neccasory")
@@ -67,7 +67,7 @@ export const loginUser = asyncHandler(async (req, res) => {
 
     const user = await User.findOne(
         {
-            $or: [ { email }]
+            $or: [{ email }]
         }
     )
     if (!user) {
@@ -108,35 +108,69 @@ export const loginUser = asyncHandler(async (req, res) => {
 
 export const logoutUser = asyncHandler(async (req, res) => {
     await User.findByIdAndUpdate(
-      req.user._id,
-      {
-        $set: {
-          refreshToken: '',
-          accessToken: '',
+        req.user._id,
+        {
+            $set: {
+                refreshToken: '',
+                accessToken: '',
+            },
         },
-      },
-      {
-        new: true,
-      }
+        {
+            new: true,
+        }
     );
-  
+
     const options = {
-      httpOnly: true,
-      secure: true,
+        httpOnly: true,
+        secure: true,
     };
-  
+
     return res
-      .status(200)
-      .cookie("accessToken", options)
-      .cookie("refreshToken", options)
-      .json(new apiResponse(200, "user log out succesfully"));
-  });
+        .status(200)
+        .cookie("accessToken", options)
+        .cookie("refreshToken", options)
+        .json(new apiResponse(200, "user log out succesfully"));
+});
+
+export const getUserDetailsById = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id).select("-password -refreshToken")
+    return res
+    .status(200)
+    .json(new apiResponse(200, user, "User details fetched successfully"))
+})
+
+export const editProfile = asyncHandler(async (req, res) => {
+    const { firstName, LastName, email, password } = req.body;
+    if (!firstName || !LastName || !email) {
+        throw new apiError(400, "All fields are required");
+    }
+
+    const updateFields = { firstName, LastName, email, password };
+
+    if (password) {
+        updateFields.password = await bcrypt.hash(password, 10);
+    }
+
+    const user = await User.findOneAndUpdate(
+        { email },
+        { $set: updateFields },
+        { new: true }
+    );
+
+    if (!user) {
+        throw new apiError(404, "User not found");
+    }
+
+    return res
+        .status(200)
+        .json(new apiResponse(200, user, "User updated successfully"));
+});
 
 export const forgetPasswordRecoveryByEmail = asyncHandler(async (req, res) => {
 
     const { email } = req.body;
 
-    const user = await User.findOne({email})
+    const user = await User.findOne({ email })
     if (!user) {
         throw new apiError(404, "User is not registed");
     }

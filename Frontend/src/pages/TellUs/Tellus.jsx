@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './Tellus.css';
 import SparkImage from '../../assets/Frame.jpg';
+import {useNavigate} from 'react-router-dom'
 
 function Tellus() {
     const [selectedCategory, setSelectedCategory] = useState('');
+    const navigate = useNavigate()
 
     const categories = [
         { name: "Business", emoji: "💼" },
@@ -20,8 +22,9 @@ function Tellus() {
         { name: "Travel & Tourism", emoji: "✈️" }
     ];
 
-    const onSubmit = () => {
-
+    const submitHandler = (e) => {
+        e.preventDefault()
+        navigate('/home/link-page')
     }
 
     return (
@@ -32,7 +35,7 @@ function Tellus() {
                 <p>Tell us about yourself</p>
                 <p>For a personalized Spark experience</p>
 
-                <form action='submit' onSubmit={onsubmit}>
+                <form action='submit' onSubmit={submitHandler}>
                     <label htmlFor="username">Tell us your username</label>
                     <input type="text" id="username" name="username" placeholder="Enter your username" />
 

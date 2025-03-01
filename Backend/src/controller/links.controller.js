@@ -24,6 +24,20 @@ export const addLinksAndShop = asyncHandler(async (req, res) => {
         .json(new apiResponse(201, newLink, "Link is added successfully"))
 })
 
+export const getLinksAndShop = asyncHandler(async (req, res) => {
+    const userId = req.user._id
+    const links = await Link.find({
+        userId 
+    })
+    if(!links) {
+        throw new apiError(404, "Links not found")
+    }
+    return res
+        .status(200)
+        .json(new apiResponse(200, links, "Links are fetched successfully"))    
+
+})
+
 export const editLinkAndShop = asyncHandler(async (req, res) => {
     const { id } = req.params
     const { link, label } = req.body

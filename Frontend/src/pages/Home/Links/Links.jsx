@@ -28,7 +28,6 @@ function Links() {
                     </div>
                 </div>
 
-                {/* Buttons for Links & Shop */}
                 <div className="button-group">
                     <button
                         className={`toggle-btn ${activeButton === "link" ? "active" : ""}`}

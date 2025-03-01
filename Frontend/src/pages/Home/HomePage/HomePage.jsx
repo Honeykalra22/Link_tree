@@ -6,6 +6,8 @@ import Links from '../Links/Links';
 import Settings from '../Settings/Settings';
 import './HomePage.css';
 import axios from 'axios';
+import Appearance from '../Appearance';
+import Analytics from '../Analytics';
 
 const  HomePage = () => {
     const [firstName, setFirstName] = useState('');
@@ -15,7 +17,7 @@ const  HomePage = () => {
         const getUserDetails = async () => {
             try {
                 const token = localStorage.getItem('accessToken');
-                const response = await axios.get('http://localhost:8000/api/v2/user/user-details', {
+                const response = await axios.get('http://localhost:5000/api/v2/user/user-details', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -40,6 +42,8 @@ const  HomePage = () => {
                     <Routes>
                         <Route path="/link-page" element={<Links />} />
                         <Route path="/settings" element={<Settings />} />
+                        <Route path='/appearance' element={<Appearance/>} />
+                        <Route path='/analytics' element={<Analytics/>} />
                     </Routes>
                 </div>
             </div>
@@ -48,21 +52,3 @@ const  HomePage = () => {
 }
 
 export default HomePage;
-
-
-{/* <div>
-                <div>
-                    <img src={logo} alt="" />
-                    <p>Spark</p>
-                </div>
-                <div>
-                    <h2>Hi, {username}!</h2>
-                    <p>Congratulations . You got a great response today . </p>
-                </div>
-            </div>
-            <div>sidebar</div>
-            <div>mobile</div>
-            <div>profile</div>
-            <div>add link</div>
-            <div>banner</div>
-            <button>save</button> */}

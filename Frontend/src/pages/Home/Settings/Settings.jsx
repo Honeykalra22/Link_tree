@@ -3,7 +3,6 @@ import axios from 'axios';
 import './Settings.css';
 
 function Settings() {
-    // const url = 'http://localhost:8000/api/v2/user/edit-profile';
     const token = localStorage.getItem('accessToken');
 
     const [formData, setFormData] = useState({
@@ -18,7 +17,7 @@ function Settings() {
     const getUserDetails = async () => {
         useEffect(() => {
             try {
-                const response = axios.get('http://localhost:8000/api/v2/user/user-details', {
+                const response = axios.get('http://localhost:5000/api/v2/user/user-details', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -52,7 +51,7 @@ function Settings() {
         e.preventDefault();
         console.log(token)
         try {
-            const response = await axios.patch('http://localhost:8000/api/v2/user/edit-profile', formData, {
+            const response = await axios.patch('http://localhost:5000/api/v2/user/edit-profile', formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json"
@@ -75,54 +74,6 @@ function Settings() {
     };
 
     return (
-        // <div className="setting_container">
-        //     <h2>Edit Profile</h2>
-        //     <div className="edit_form">
-        //         <form onSubmit={submitHandler}>
-        //             <div>
-        //                 <label>First Name</label>
-        //                 <input 
-        //                     type="text" 
-        //                     name="firstName" 
-        //                     value={formData.firstName} 
-        //                     onChange={changeHandler} 
-        //                 />
-        //             </div>
-        //             <div>
-        //                 <label>Last Name</label>
-        //                 <input 
-        //                     type="text" 
-        //                     name="lastName"  // Fixed case
-        //                     value={formData.lastName} 
-        //                     onChange={changeHandler} 
-        //                 />
-        //             </div>
-        //             <div>
-        //                 <label>Email</label>
-        //                 <input 
-        //                     type="email" 
-        //                     name="email" 
-        //                     value={formData.email} 
-        //                     onChange={changeHandler} 
-        //                 />
-        //             </div>
-        //             <div>
-        //                 <label>Password</label>
-        //                 <input 
-        //                     type="password" 
-        //                     name="password" 
-        //                     value={formData.password} 
-        //                     onChange={changeHandler} 
-        //                 />
-        //             </div>
-
-        //             <button type="submit">Save</button>
-        //         </form>
-        //     </div>
-        // </div>
-
-
-
         <div className="settings_container">
             <h2 className="settings_heading">Edit Profile</h2>
             <div className="settings_form">

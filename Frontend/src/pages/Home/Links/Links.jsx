@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import logo from '../../../assets/Group.png'
 import './Links.css'
 
 function Links() {
     const [activeButton, setActiveButton] = useState(null);
     const [showLinks, setShowLinks] = useState(true);
+    const [isdata, setIsData] = useState(false);
 
     const handleButtonClick = (button) => {
         setActiveButton(button);
@@ -16,7 +17,7 @@ function Links() {
     };
 
     return (
-        <div className='container'>
+        <div className='link-container'>
             <div className="phone-container">
                 {/* Top Section */}
                 <div className="profile">
@@ -70,15 +71,21 @@ function Links() {
                 <p>profile</p>
                 <div className="profile-section">
                     <div className="profile-pic">
-                        <img src="" alt="Profile" />
+                        <img src={logo} alt="Profile" className='profile-img-1' />
                         <div className="profile-actions">
                             <p className="pick-image">Pick an image</p>
                             <p className="remove">Remove</p>
                         </div>
                     </div>
                     <div className="profile-inputs">
-                        <input type="text" placeholder="Profile Title" />
-                        <input type="text" placeholder="Bio" />
+                        <div className='profile-title'>
+                            <label>Profile Title</label>
+                            <input type="text" placeholder="Profile Title" />
+                        </div>
+                        <div className='profile-bio'>
+                            <label>Bio</label>
+                            <textarea type="text" placeholder="Bio" />
+                        </div>
                     </div>
                 </div>
 
@@ -91,16 +98,29 @@ function Links() {
                     <div className="add-box">
                         <p>Add</p>
                     </div>
+
+                    {
+                        isdata && (
+                            <div className="link-box">
+                                <div className="link-item">
+                                    <img src={logo} alt="youtube icon" /> Latest YouTube Video
+                                </div>
+                                <div className="link-item">
+                                    <img src={logo} alt="instagram" /> Latest Instagram Reel
+                                </div>
+                            </div>
+                        )
+                    }
                 </div>
 
                 {/* Banner Section */}
                 <div className="banner-section">
                     <div className="banner">
-                        <img src={logo} alt="Banner" />
-                        <h2>Username</h2>
+                        <img src={logo} alt="Banner" className='banner-img-1' />
+                        <h2>@Username</h2>
                         <p>
-                            <img src="" alt="User Icon" />
-                            username
+                            <img src={logo} alt="User Icon" />
+                            /username
                         </p>
                     </div>
                     <div className="color-options">

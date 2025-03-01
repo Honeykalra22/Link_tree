@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Login = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const url = 'http://localhost:8000/api/v2/user/login';
+    const url = 'http://localhost:5000/api/v2/user/login';
     const [formData, setFormData] = useState({ email: "", password: "" });
     const isFormValid = formData.email.trim() !== "" && formData.password.trim() !== "";
 

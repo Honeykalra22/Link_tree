@@ -14,7 +14,7 @@ const Register = () => {
     LastName:'',
   });
 
-  const url = 'http://localhost:8000/api/v2/user/register';
+  const url = 'http://localhost:5000/api/v2/user/register';
   const navigate = useNavigate()
 
   const handleChange = (e) => {

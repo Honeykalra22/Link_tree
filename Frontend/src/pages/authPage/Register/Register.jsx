@@ -14,7 +14,8 @@ const Register = () => {
     LastName:'',
   });
 
-  const url = 'http://localhost:5000/api/v2/user/register';
+  // const url = 'http://localhost:5000/api/v2/user/register';
+  const url = 'https://link-tree-tan.vercel.app/'
   const navigate = useNavigate()
 
   const handleChange = (e) => {
